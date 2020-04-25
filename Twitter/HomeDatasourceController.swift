@@ -8,6 +8,11 @@
 
 import LBTAComponents
 
+//github remote repository added.
+//Let's start using Branch: jiwoo
+//I will edit some code and try to merge jiwoo's branch work into master!
+//Let's check this tree on SourceTree
+
 
 //헤더추가하기
 class UserHeader: DatasourceCell {
@@ -21,7 +26,7 @@ class UserHeader: DatasourceCell {
 class UserFooter: DatasourceCell {
     override func setupViews() {
         super.setupViews()
-        backgroundColor = .systemPink
+        backgroundColor = .lightGray
     }
 }
 
