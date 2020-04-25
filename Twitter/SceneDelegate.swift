@@ -24,8 +24,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScence
         window?.makeKeyAndVisible()
         
-        let homeController = HomeController(collectionViewLayout: UICollectionViewFlowLayout())
-        window?.rootViewController = UINavigationController(rootViewController: homeController)
+//        let homeController = HomeController(collectionViewLayout: UICollectionViewFlowLayout())
+//        window?.rootViewController = UINavigationController(rootViewController: homeController)
+        
+        window?.rootViewController = UINavigationController(rootViewController: HomeDatasourceController())
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
