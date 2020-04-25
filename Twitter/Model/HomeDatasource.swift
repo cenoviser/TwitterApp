@@ -23,6 +23,14 @@ class HomeDatasource: Datasource {
         return [UserFooter.self]
     }
     
+    override func footerItem(_ section: Int) -> Any? {
+        return "This is the footer... words.count = " + "\(words.count)"
+    }
+    
+    override func headerItem(_ section: Int) -> Any? {
+        return "This is the Header!"
+    }
+    
     //UserCell에서 정의한 Cell을 적용시키기!
     override func cellClasses() -> [DatasourceCell.Type] {
         return [UserCell.self]
