@@ -25,7 +25,7 @@ class UserHeader: DatasourceCell {
     
     override func setupViews() {
         super.setupViews()
-        backgroundColor = .white
+        backgroundColor = .blue
         addSubview(headerLabel)
         headerLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
     }
@@ -49,7 +49,7 @@ class UserFooter: DatasourceCell {
     
     override func setupViews() {
         super.setupViews()
-        backgroundColor = .lightGray
+        backgroundColor = .systemPink
         
         addSubview(footerLabel)
         footerLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
@@ -69,18 +69,65 @@ class UserCell: DatasourceCell {
         }
     }
     
+    //UserCell의 왼쪽에 이미지 뷰를 넣을 공간 만들기
+    let profileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .red
+        return imageView
+    }()
+    
+    
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "T T T"
+//        label.text = "T T T"
+        label.backgroundColor = .green
         return label
+    }()
+    
+    let usernameLable: UILabel = {
+        let label = UILabel()
+        label.text = "User name"
+        label.backgroundColor = .purple
+        return label
+    }()
+    
+    //bio는 Text View로
+    let bioTextView: UITextView = {
+        let textView = UITextView()
+        textView.text = "Your bio"
+        textView.backgroundColor = .yellow
+        return textView
+    }()
+    
+    
+    //How to put the String into the Button?
+    let followButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .cyan
+        return button
     }()
     
     override func setupViews() {
         super.setupViews()
-        backgroundColor = .yellow
+//        backgroundColor = .yellow
         
+        addSubview(profileImageView)
         addSubview(nameLabel)
-        nameLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 10, leftConstant: 50, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        addSubview(usernameLable)
+        addSubview(bioTextView)
+        addSubview(followButton)
+        
+        profileImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 50)
+        
+        //left anchor은 프로파일 이미지의 오른쪽!
+        nameLabel.anchor(profileImageView.topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: followButton.leftAnchor, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 20)
+        
+        //right anchor은 위의 nameLabel과 같게 하기 위해
+        usernameLable.anchor(nameLabel.bottomAnchor, left: profileImageView.rightAnchor, bottom: nil, right: followButton.leftAnchor, topConstant: 4, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 20)
+        
+        bioTextView.anchor(usernameLable.bottomAnchor, left: usernameLable.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 4, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        
+        followButton.anchor(topAnchor, left: nil, bottom: nil, right: self.rightAnchor, topConstant: 12, leftConstant: 0, bottomConstant: 0, rightConstant: 12, widthConstant: 120, heightConstant: 34)
         
     }
 }

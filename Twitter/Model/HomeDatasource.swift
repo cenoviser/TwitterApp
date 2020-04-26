@@ -24,7 +24,7 @@ class HomeDatasource: Datasource {
     }
     
     override func footerItem(_ section: Int) -> Any? {
-        return "This is the footer... words.count = " + "\(words.count)"
+        return "This is the footer! words.count = " + "\(words.count)"
     }
     
     override func headerItem(_ section: Int) -> Any? {
