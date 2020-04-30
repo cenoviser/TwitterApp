@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		37CB7F747AFC34EF15497832 /* Pods_Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14C14E0D8DE2154951019D8 /* Pods_Twitter.framework */; };
-		DD2D98F9245439F6000DC1F4 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2D98F8245439F6000DC1F4 /* Cells.swift */; };
+		DD2D98F9245439F6000DC1F4 /* UserHeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2D98F8245439F6000DC1F4 /* UserHeaderFooter.swift */; };
 		DD2D98FB24543A1E000DC1F4 /* HomeDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2D98FA24543A1E000DC1F4 /* HomeDatasource.swift */; };
 		DD3643D1245B2C870067486C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3643D0245B2C870067486C /* User.swift */; };
+		DD3643D3245B34560067486C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3643D2245B34560067486C /* UserCell.swift */; };
 		DD61FD1524540FB200EB1213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61FD1424540FB200EB1213 /* AppDelegate.swift */; };
 		DD61FD1724540FB200EB1213 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61FD1624540FB200EB1213 /* SceneDelegate.swift */; };
 		DD61FD1924540FB200EB1213 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61FD1824540FB200EB1213 /* ViewController.swift */; };
@@ -24,9 +25,10 @@
 /* Begin PBXFileReference section */
 		6887F578705D30BDDC102429 /* Pods-Twitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter.release.xcconfig"; path = "Target Support Files/Pods-Twitter/Pods-Twitter.release.xcconfig"; sourceTree = "<group>"; };
 		B14C14E0D8DE2154951019D8 /* Pods_Twitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Twitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD2D98F8245439F6000DC1F4 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
+		DD2D98F8245439F6000DC1F4 /* UserHeaderFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHeaderFooter.swift; sourceTree = "<group>"; };
 		DD2D98FA24543A1E000DC1F4 /* HomeDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDatasource.swift; sourceTree = "<group>"; };
 		DD3643D0245B2C870067486C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DD3643D2245B34560067486C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		DD61FD1124540FB200EB1213 /* Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD61FD1424540FB200EB1213 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD61FD1624540FB200EB1213 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,7 +82,8 @@
 		DD2D98F7245439A8000DC1F4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DD2D98F8245439F6000DC1F4 /* Cells.swift */,
+				DD2D98F8245439F6000DC1F4 /* UserHeaderFooter.swift */,
+				DD3643D2245B34560067486C /* UserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -247,9 +250,10 @@
 			files = (
 				DD61FD2B2454149700EB1213 /* HomeDatasourceController.swift in Sources */,
 				DD2D98FB24543A1E000DC1F4 /* HomeDatasource.swift in Sources */,
-				DD2D98F9245439F6000DC1F4 /* Cells.swift in Sources */,
+				DD2D98F9245439F6000DC1F4 /* UserHeaderFooter.swift in Sources */,
 				DD61FD2924540FD200EB1213 /* HomeController.swift in Sources */,
 				DD3643D1245B2C870067486C /* User.swift in Sources */,
+				DD3643D3245B34560067486C /* UserCell.swift in Sources */,
 				DD61FD1924540FB200EB1213 /* ViewController.swift in Sources */,
 				DD61FD1524540FB200EB1213 /* AppDelegate.swift in Sources */,
 				DD61FD1724540FB200EB1213 /* SceneDelegate.swift in Sources */,
