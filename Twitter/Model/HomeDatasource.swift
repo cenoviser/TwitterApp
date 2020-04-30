@@ -9,7 +9,7 @@
 import LBTAComponents
 
 class HomeDatasource: Datasource {
-    let words = ["user1", "user2", "user3", "1111", "222"]
+    let words = ["user1", "user2", "user3"]
     
     
     //UserHeader에서 정의한 cell 적용시키기
@@ -22,14 +22,14 @@ class HomeDatasource: Datasource {
     override func footerClasses() -> [DatasourceCell.Type]? {
         return [UserFooter.self]
     }
+
+//    override func footerItem(_ section: Int) -> Any? {
+//        return "This is the footer! words.count = " + "\(words.count)"
+//    }
     
-    override func footerItem(_ section: Int) -> Any? {
-        return "This is the footer! words.count = " + "\(words.count)"
-    }
-    
-    override func headerItem(_ section: Int) -> Any? {
-        return "This is the Header!"
-    }
+//    override func headerItem(_ section: Int) -> Any? {
+//        return "This is the Header!"
+//    }
     
     //UserCell에서 정의한 Cell을 적용시키기!
     override func cellClasses() -> [DatasourceCell.Type] {

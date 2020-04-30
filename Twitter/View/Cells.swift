@@ -8,26 +8,32 @@
 
 import LBTAComponents
 
+let twitterBlue = UIColor(r: 61, g: 167, b: 244)
+
+
 
 //헤더추가하기
 class UserHeader: DatasourceCell {
     
-    override var datasourceItem: Any?{
-        didSet {
-            headerLabel.text = datasourceItem as? String
-        }
-    }
+//    override var datasourceItem: Any?{
+//        didSet {
+//            headerLabel.text = datasourceItem as? String
+//        }
+//    }
     
     let headerLabel: UILabel = {
         let label = UILabel()
+        label.text = "WHO TO FOLLOW"
+        label.font = UIFont.systemFont(ofSize: 16)
         return label
     }()
     
     override func setupViews() {
         super.setupViews()
-        backgroundColor = .blue
+//        backgroundColor = .blue
         addSubview(headerLabel)
-        headerLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        headerLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        
     }
     
 }
@@ -35,24 +41,26 @@ class UserHeader: DatasourceCell {
 //푸터추가하기
 class UserFooter: DatasourceCell {
     
-    override var datasourceItem: Any?{
-        didSet {
-            footerLabel.text = datasourceItem as? String
-        }
-    }
+//    override var datasourceItem: Any?{
+//        didSet {
+//            footerLabel.text = datasourceItem as? String
+//        }
+//    }
     
     let footerLabel: UILabel = {
         let label = UILabel()
-        label.text = "Hello"
+        label.text = "Show me more"
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.textColor = twitterBlue
         return label
     }()
     
     override func setupViews() {
         super.setupViews()
-        backgroundColor = .systemPink
+//        backgroundColor = .systemPink
         
         addSubview(footerLabel)
-        footerLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        footerLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
     }
     
     
@@ -72,38 +80,59 @@ class UserCell: DatasourceCell {
     //UserCell의 왼쪽에 이미지 뷰를 넣을 공간 만들기
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .red
+        imageView.image = UIImage(named: "jiwoo_png")
+        //모서리 둥글하게
+        imageView.layer.cornerRadius = 5
+//        imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
         return imageView
     }()
     
     
     let nameLabel: UILabel = {
         let label = UILabel()
-//        label.text = "T T T"
-        label.backgroundColor = .green
+        label.text = "Jiwoo Ban"
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
     
     let usernameLable: UILabel = {
         let label = UILabel()
-        label.text = "User name"
-        label.backgroundColor = .purple
+        label.text = "@Wellers"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = UIColor(r: 130, g: 130, b: 130)
         return label
     }()
     
     //bio는 Text View로
     let bioTextView: UITextView = {
         let textView = UITextView()
-        textView.text = "Your bio"
-        textView.backgroundColor = .yellow
+        textView.text = "Your bioYour bioYour bioYour bioYour bioYour bioYour bioYour bioYour bioYour bioYour bioYour bioYour bioYour bioYour bio"
+//        textView.backgroundColor = .yellow
+        textView.font = UIFont.systemFont(ofSize: 15)
+        //유저네임레이블이 좀 짤려보이는거 수정하기
+        textView.backgroundColor = .clear
         return textView
     }()
     
     
-    //How to put the String into the Button?
+    
     let followButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .cyan
+        let twitterBlue = UIColor(r: 61, g: 167, b: 244)
+//        button.backgroundColor = .cyan
+        button.layer.cornerRadius = 5
+        button.layer.borderColor = twitterBlue.cgColor
+        button.layer.borderWidth = 2
+        
+        //Put the String into the Button?
+        button.setTitle("Follow", for: .normal)
+        button.setTitleColor(twitterBlue, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setImage(.checkmark, for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -15, bottom: 0, right: 0)
+//        button.titleEdgeInsets = UIEdgeInsets(top: <#T##CGFloat#>, left: <#T##CGFloat#>, bottom: <#T##CGFloat#>, right: <#T##CGFloat#>)
         return button
     }()
     
@@ -123,9 +152,9 @@ class UserCell: DatasourceCell {
         nameLabel.anchor(profileImageView.topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: followButton.leftAnchor, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 20)
         
         //right anchor은 위의 nameLabel과 같게 하기 위해
-        usernameLable.anchor(nameLabel.bottomAnchor, left: profileImageView.rightAnchor, bottom: nil, right: followButton.leftAnchor, topConstant: 4, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 20)
+        usernameLable.anchor(nameLabel.bottomAnchor, left: profileImageView.rightAnchor, bottom: nil, right: followButton.leftAnchor, topConstant: 4, leftConstant: 5, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 20)
         
-        bioTextView.anchor(usernameLable.bottomAnchor, left: usernameLable.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 4, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        bioTextView.anchor(usernameLable.bottomAnchor, left: usernameLable.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: -4, leftConstant: -4, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
         followButton.anchor(topAnchor, left: nil, bottom: nil, right: self.rightAnchor, topConstant: 12, leftConstant: 0, bottomConstant: 0, rightConstant: 12, widthConstant: 120, heightConstant: 34)
         
