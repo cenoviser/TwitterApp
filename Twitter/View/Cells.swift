@@ -30,6 +30,10 @@ class UserHeader: DatasourceCell {
     
     override func setupViews() {
         super.setupViews()
+        
+        //셀을 구분짓는 라인 추가하기
+        separatorLineView.isHidden = false
+//        separatorLineView.backgroundColor = UIColor(r: 230, g: 230, b: 230)
 //        backgroundColor = .blue
         addSubview(headerLabel)
         headerLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
@@ -73,7 +77,14 @@ class UserCell: DatasourceCell {
     //정의한 word들을 레이블에 넣기
     override var datasourceItem: Any? {
         didSet {
-            nameLabel.text = datasourceItem as? String
+//            nameLabel.text = datasourceItem as? String
+            guard let user = datasourceItem as? User else {
+                return
+            }
+            nameLabel.text = user.name
+            usernameLable.text = user.username
+            bioTextView.text = user.bioText
+            profileImageView.image = user.image
         }
     }
     
@@ -145,6 +156,10 @@ class UserCell: DatasourceCell {
         addSubview(usernameLable)
         addSubview(bioTextView)
         addSubview(followButton)
+        
+        //셀을 분리하는 라인 추가하기
+        separatorLineView.isHidden = false
+        //        separatorLineView.backgroundColor = UIColor(r: 230, g: 230, b: 230)
         
         profileImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 50)
         

@@ -9,7 +9,17 @@
 import LBTAComponents
 
 class HomeDatasource: Datasource {
-    let words = ["user1", "user2", "user3"]
+    
+    let users: [User] = {
+        let JiwooUser = User(name: "Jiwoo Ban", username: "@Let's Build That App", bioText: "Wooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo", image: UIImage.init(named: "jiwoo")!)
+        let anotherUser = User(name: "Song Ban", username: "@Let's Build That App", bioText: "Booooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo", image: .actions)
+        
+        
+        
+        return [JiwooUser, anotherUser]
+    }()
+    
+//    let words = ["user1", "user2", "user3"]
     
     
     //UserHeader에서 정의한 cell 적용시키기
@@ -38,10 +48,10 @@ class HomeDatasource: Datasource {
     
     //인덱스에 있는 아이템을 리턴하여 셀에 보내는것!
     override func item(_ indexPath: IndexPath) -> Any? {
-        return words[indexPath.item]
+        return users[indexPath.item]
     }
     
     override func numberOfItems(_ section: Int) -> Int {
-        return words.count
+        return users.count
     }
 }
