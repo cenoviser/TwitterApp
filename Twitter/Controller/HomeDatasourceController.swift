@@ -22,11 +22,62 @@ class HomeDatasourceController: DatasourceController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //커스텀 네비게이션바
+        setupNavigationBarItems()
+        
+        
         //이전에 직접 만들었던 셀이랑, 헤더랑 푸터를 다시 만들어 보자. 이번에는 컴포넌트를 이용해서!
         let homeDatasource = HomeDatasource()
         self.datasource = homeDatasource
         
     }
+    
+    
+    
+    //네이케이션바 커스터마이징
+    private func setupNavigationBarItems() {
+
+        
+        //타이틀
+        let title_icon = UIImageView()
+        title_icon.image = UIImage(named: "title_icon")
+        navigationItem.titleView = title_icon
+        title_icon.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        title_icon.contentMode = .scaleAspectFit
+        
+        
+        
+        //왼쪽
+        let followButton = UIButton(type: .system)
+        let followButtonImage = UIImage(named: "follow")
+        followButton.setImage(followButtonImage?.withRenderingMode(.alwaysOriginal), for: .normal) //버튼이미지의 색깔이 다르게 보여서, 렌더링모드의 항상 원본유지 하는 코드 추가.
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: followButton)
+        followButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        
+        
+        
+        //오른쪽 두개의 버튼
+        let searchButton = UIButton(type: .system)
+        let searchButtonImage = UIImage(named: "search")
+        let composeButton = UIButton(type: .system)
+        let composeButtonImage = UIImage(named: "compose")
+        
+        searchButton.setImage(searchButtonImage?.withRenderingMode(.alwaysOriginal), for: .normal)
+        searchButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        
+        composeButton.setImage(composeButtonImage?.withRenderingMode(.alwaysOriginal), for: .normal)
+        composeButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: composeButton), UIBarButtonItem(customView: searchButton)]
+        
+        
+        //네이게이션바를 하얗게
+        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.isTranslucent = false
+    }
+    
+    
+    
+    
     
     //셀과 셀 사이의 간격을 없애기
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
