@@ -33,6 +33,8 @@ class UserCell: DatasourceCell {
         imageView.layer.cornerRadius = 5
 //        imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
+        imageView.layer.borderColor = UIColor(r: 170, g: 170, b: 170).cgColor
+        imageView.layer.borderWidth = 2
         return imageView
     }()
     
@@ -60,6 +62,7 @@ class UserCell: DatasourceCell {
         textView.font = UIFont.systemFont(ofSize: 15)
         //유저네임레이블이 좀 짤려보이는거 수정하기
         textView.backgroundColor = .clear
+//        textView.backgroundColor = .red
         return textView
     }()
     
@@ -86,7 +89,10 @@ class UserCell: DatasourceCell {
     
     override func setupViews() {
         super.setupViews()
+        
+        //cell과 cell사이에 간격이 있다. 
 //        backgroundColor = .yellow
+        
         
         addSubview(profileImageView)
         addSubview(nameLabel)
@@ -98,7 +104,7 @@ class UserCell: DatasourceCell {
         separatorLineView.isHidden = false
         //        separatorLineView.backgroundColor = UIColor(r: 230, g: 230, b: 230)
         
-        profileImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 50)
+        profileImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 60)
         
         //left anchor은 프로파일 이미지의 오른쪽!
         nameLabel.anchor(profileImageView.topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: followButton.leftAnchor, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 20)
