@@ -22,6 +22,9 @@ class HomeDatasourceController: DatasourceController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //셀을 받치고있는 컨트롤러에 라이트블루 색깔 입히기
+        collectionView?.backgroundColor = UIColor(r: 232, g: 236, b: 241)
+        
         //커스텀 네비게이션바
         setupNavigationBarItems()
         
@@ -38,13 +41,21 @@ class HomeDatasourceController: DatasourceController {
     private func setupNavigationBarItems() {
 
         
-        //타이틀
+        //타이틀 + remaining
         let title_icon = UIImageView()
         title_icon.image = UIImage(named: "title_icon")
         navigationItem.titleView = title_icon
         title_icon.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
         title_icon.contentMode = .scaleAspectFit
         
+            //네비게이션바에 선이 보이는것을 없애기
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            //네이케이션바의 선을 안보이게 한후, 아주 얇은 라인추가하기
+        let navBarSeparatorView = UIView()
+        navBarSeparatorView.backgroundColor = UIColor(r: 230, g: 230, b: 230)
+        view.addSubview(navBarSeparatorView)
+        navBarSeparatorView.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0.5)
         
         
         //왼쪽
@@ -87,12 +98,19 @@ class HomeDatasourceController: DatasourceController {
     
     //header size정의
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        //첫번째 섹션은 0부터 시작. 다음 섹션부터는 헤더와 푸터를 적용시키기 않기 위한 코드
+        if section == 1 {
+            return .zero
+        }
         return CGSize(width: view.frame.width, height: 50)
     }
     
     //footer size 정의
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 100)
+        if section == 1 {
+            return .zero
+        }
+        return CGSize(width: view.frame.width, height: 64)
     }
     
     //Cell size 정의

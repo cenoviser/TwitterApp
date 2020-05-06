@@ -87,8 +87,13 @@ class UserCell: DatasourceCell {
         return button
     }()
     
+    
+    
+    
     override func setupViews() {
         super.setupViews()
+        
+        backgroundColor = .white
         
         //cell과 cell사이에 간격이 있다. 
 //        backgroundColor = .yellow

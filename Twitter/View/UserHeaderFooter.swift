@@ -29,6 +29,8 @@ class UserHeader: DatasourceCell {
     override func setupViews() {
         super.setupViews()
         
+        backgroundColor = .white
+        
         //셀을 구분짓는 라인 추가하기
         separatorLineView.isHidden = false
 //        separatorLineView.backgroundColor = UIColor(r: 230, g: 230, b: 230)
@@ -59,10 +61,19 @@ class UserFooter: DatasourceCell {
     
     override func setupViews() {
         super.setupViews()
+        
+//        backgroundColor = .white
 //        backgroundColor = .systemPink
         
+        //두번째 섹션과 첫번째 색션을 구분하기 위한 코드.
+        let whiteBackgroundView = UIView()
+        whiteBackgroundView.backgroundColor = .white
+        
+        //두번째 섹션과 첫번째 색션을 구분하기 위한 코드.
+        addSubview(whiteBackgroundView)
         addSubview(footerLabel)
-        footerLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        whiteBackgroundView.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 14, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        footerLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 12, bottomConstant: 14, rightConstant: 0, widthConstant: 0, heightConstant: 0)
     }
     
     
