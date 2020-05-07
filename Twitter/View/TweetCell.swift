@@ -59,6 +59,24 @@ class TweetCell: DatasourceCell {
     }()
     
     
+    let replyButton: UIButton = {
+        //시스템으로 하면 can be highlighted
+        let button = UIButton(type: .system)
+        let replyImage = UIImage(named: "reply")
+        button.setImage(replyImage, for: .normal)
+        return button
+    }()
+    
+    
+    let retweetButton: UIButton = {
+        //시스템으로 하면 can be highlighted
+        let button = UIButton(type: .system)
+        let replyImage = UIImage(named: "retweet")
+        button.setImage(replyImage, for: .normal)
+        return button
+    }()
+    
+    
     override func setupViews() {
         
         //원래는 라인이 히든되어있음
@@ -68,7 +86,31 @@ class TweetCell: DatasourceCell {
         
         addSubview(profileImageView)
         addSubview(messageTextView)
+        
+//        addSubview(replyButton)
+//        addSubview(retweetButton)
+        
+        
         profileImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 60)
+        
         messageTextView.anchor(topAnchor, left: profileImageView.rightAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 4, leftConstant: 7, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        
+//        replyButton.anchor(nil, left: messageTextView.leftAnchor, bottom: self.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 20, heightConstant: 20)
+        
+        // UIStackView를 사용해서 트윗셀 밑에 리플라이, 리트윗,..., 등 4개의 버튼을 어떤 화면에서든 한번에 관리하기 쉽게 만들기
+        setupBottomButtons()
     }
+    
+    
+    fileprivate func setupBottomButtons() {
+        let view = UIView()
+        view.backgroundColor = .red
+        let buttonStackView = UIStackView(arrangedSubviews: [view])
+        
+        addSubview(buttonStackView)
+        buttonStackView.anchor(nil, left: messageTextView.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 20)
+    }
+    
+    
+    
 }
