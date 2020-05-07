@@ -13,6 +13,7 @@
 		DD3643D1245B2C870067486C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3643D0245B2C870067486C /* User.swift */; };
 		DD3643D3245B34560067486C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3643D2245B34560067486C /* UserCell.swift */; };
 		DD3643D5246310150067486C /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3643D4246310150067486C /* TweetCell.swift */; };
+		DD3643D7246414AD0067486C /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3643D6246414AD0067486C /* Tweet.swift */; };
 		DD61FD1524540FB200EB1213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61FD1424540FB200EB1213 /* AppDelegate.swift */; };
 		DD61FD1724540FB200EB1213 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61FD1624540FB200EB1213 /* SceneDelegate.swift */; };
 		DD61FD1924540FB200EB1213 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61FD1824540FB200EB1213 /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 		DD3643D0245B2C870067486C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DD3643D2245B34560067486C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		DD3643D4246310150067486C /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+		DD3643D6246414AD0067486C /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		DD61FD1124540FB200EB1213 /* Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD61FD1424540FB200EB1213 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD61FD1624540FB200EB1213 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			children = (
 				DD2D98FA24543A1E000DC1F4 /* HomeDatasource.swift */,
 				DD3643D0245B2C870067486C /* User.swift */,
+				DD3643D6246414AD0067486C /* Tweet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				DD3643D5246310150067486C /* TweetCell.swift in Sources */,
 				DD61FD1524540FB200EB1213 /* AppDelegate.swift in Sources */,
 				DD61FD1724540FB200EB1213 /* SceneDelegate.swift in Sources */,
+				DD3643D7246414AD0067486C /* Tweet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

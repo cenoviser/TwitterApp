@@ -19,7 +19,13 @@ class HomeDatasource: Datasource {
         return [JiwooUser, anotherUser, newUser]
     }()
     
-    let tweets = ["tweet1", "tweet2"]
+    let tweets: [Tweet] = {
+        let JiwooUser = User(name: "Jiwoo Ban", username: "@Let's Build That App", bioText: "Hello, my name is Jiwoo Ban, JB. I'm working for a company name Wellers as a software engineer. I'm developiing an iOS application. And I'm 26 years old.", image: UIImage.init(named: "jiwoo")!)
+        let tweet = Tweet(user: JiwooUser, message: "GOGOGOGOOGOOOOOOOOOOOOOOGOOGOGOGOGOGOGOOGOGOGOOGOGOOGOGOOOOOOOGOGOOGOGOGOGOOGOGOGOGOOGOGOGOGO")
+        let tweet2 = Tweet(user: JiwooUser, message: "Second GOGOGOGOOGOOOOOOOOOOOOOOGOOGOGOGOGOGOGOOGOGOGOOGOGOOGOGOOOOOOOGOGOOGOGOGOGOOGOGOGOGOOGOGOGOGO")
+
+        return [tweet, tweet2]
+    }()
     
 //    let words = ["user1", "user2", "user3"]
     
@@ -50,6 +56,10 @@ class HomeDatasource: Datasource {
     
     //인덱스에 있는 아이템을 리턴하여 셀에 보내는것!
     override func item(_ indexPath: IndexPath) -> Any? {
+        //트윗메세지 show하기
+        if indexPath.section == 1 {
+            return tweets[indexPath.item]
+        }
         return users[indexPath.item]
     }
     
