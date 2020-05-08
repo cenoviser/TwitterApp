@@ -103,9 +103,23 @@ class TweetCell: DatasourceCell {
     
     
     fileprivate func setupBottomButtons() {
-        let view = UIView()
-        view.backgroundColor = .red
-        let buttonStackView = UIStackView(arrangedSubviews: [view])
+        
+        let replyButtonContainerView = UIView()
+        replyButtonContainerView.backgroundColor = .red
+        
+        let retweetButtonContainerView = UIView()
+        retweetButtonContainerView.backgroundColor = .blue
+        
+        let likeButtonContainerView = UIView()
+        likeButtonContainerView.backgroundColor = .green
+        
+        let directMessageButtonContainerView = UIView()
+        directMessageButtonContainerView.backgroundColor = .purple
+        
+        let buttonStackView = UIStackView(arrangedSubviews: [replyButtonContainerView, retweetButtonContainerView, likeButtonContainerView, directMessageButtonContainerView])
+        buttonStackView.axis = .horizontal
+        //동일하게 나누기
+        buttonStackView.distribution = .fillEqually
         
         addSubview(buttonStackView)
         buttonStackView.anchor(nil, left: messageTextView.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 20)
