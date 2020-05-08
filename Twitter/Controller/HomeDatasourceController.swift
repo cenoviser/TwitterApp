@@ -18,6 +18,11 @@ import LBTAComponents
 //이제 이걸 쓰기위해 scene delegate에 가서, 루트뷰에 추가해주기
 class HomeDatasourceController: DatasourceController {
     
+    //로테이션 했을때, 레이아웃이 쪼그라든것을 펴주는 역할
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionViewLayout.invalidateLayout()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

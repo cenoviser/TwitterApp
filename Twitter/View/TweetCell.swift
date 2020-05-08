@@ -41,7 +41,7 @@ class TweetCell: DatasourceCell {
     let messageTextView: UITextView = {
         let tv = UITextView()
         tv.text = "SOME TEXT"
-        tv.backgroundColor = .yellow
+//        tv.backgroundColor = .yellow
         return tv
     }()
     
@@ -63,7 +63,7 @@ class TweetCell: DatasourceCell {
         //시스템으로 하면 can be highlighted
         let button = UIButton(type: .system)
         let replyImage = UIImage(named: "reply")
-        button.setImage(replyImage, for: .normal)
+        button.setImage(replyImage?.withRenderingMode(.alwaysOriginal), for: .normal)
         return button
     }()
     
@@ -71,11 +71,26 @@ class TweetCell: DatasourceCell {
     let retweetButton: UIButton = {
         //시스템으로 하면 can be highlighted
         let button = UIButton(type: .system)
-        let replyImage = UIImage(named: "retweet")
-        button.setImage(replyImage, for: .normal)
+        let retweetImage = UIImage(named: "retweet")
+        button.setImage(retweetImage?.withRenderingMode(.alwaysOriginal), for: .normal)
         return button
     }()
     
+    let likeButton: UIButton = {
+        //시스템으로 하면 can be highlighted
+        let button = UIButton(type: .system)
+        let likeImage = UIImage(named: "like")
+        button.setImage(likeImage?.withRenderingMode(.alwaysOriginal), for: .normal)
+        return button
+    }()
+    
+    let sendMsgButton: UIButton = {
+        //시스템으로 하면 can be highlighted
+        let button = UIButton(type: .system)
+        let sendMsgImage = UIImage(named: "send_message")
+        button.setImage(sendMsgImage?.withRenderingMode(.alwaysOriginal), for: .normal)
+        return button
+    }()
     
     override func setupViews() {
         
@@ -105,16 +120,16 @@ class TweetCell: DatasourceCell {
     fileprivate func setupBottomButtons() {
         
         let replyButtonContainerView = UIView()
-        replyButtonContainerView.backgroundColor = .red
+//        replyButtonContainerView.backgroundColor = .red
         
         let retweetButtonContainerView = UIView()
-        retweetButtonContainerView.backgroundColor = .blue
+//        retweetButtonContainerView.backgroundColor = .blue
         
         let likeButtonContainerView = UIView()
-        likeButtonContainerView.backgroundColor = .green
+//        likeButtonContainerView.backgroundColor = .green
         
         let directMessageButtonContainerView = UIView()
-        directMessageButtonContainerView.backgroundColor = .purple
+//        directMessageButtonContainerView.backgroundColor = .purple
         
         let buttonStackView = UIStackView(arrangedSubviews: [replyButtonContainerView, retweetButtonContainerView, likeButtonContainerView, directMessageButtonContainerView])
         buttonStackView.axis = .horizontal
@@ -123,6 +138,15 @@ class TweetCell: DatasourceCell {
         
         addSubview(buttonStackView)
         buttonStackView.anchor(nil, left: messageTextView.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 20)
+        addSubview(replyButton)
+        replyButton.anchor(replyButtonContainerView.topAnchor, left: replyButtonContainerView.leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 20, heightConstant: 20)
+        addSubview(retweetButton)
+        retweetButton.anchor(retweetButtonContainerView
+            .topAnchor, left: retweetButtonContainerView.leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 20, heightConstant: 20)
+        addSubview(likeButton)
+        likeButton.anchor(likeButtonContainerView.topAnchor, left: likeButtonContainerView.leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 20, heightConstant: 20)
+        addSubview(sendMsgButton)
+        sendMsgButton.anchor(directMessageButtonContainerView.topAnchor, left: directMessageButtonContainerView.leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 20, heightConstant: 20)
     }
     
     
