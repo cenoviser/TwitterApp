@@ -18,7 +18,7 @@ class TweetCell: DatasourceCell {
             
             let attributedText = NSMutableAttributedString(string: tweet.user.name, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)])
             
-            let usernameString = "  \(tweet.user.username)"
+            let usernameString = "  \(tweet.user.username)\n"
             
             attributedText.append(NSAttributedString(string: usernameString, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15), NSAttributedString.Key.foregroundColor: UIColor.gray]))
             
@@ -30,7 +30,7 @@ class TweetCell: DatasourceCell {
             
             
             //트윗 텍스트 어트리뷰트
-            let tweetString = "\n\(tweet.message)"
+            let tweetString = "\(tweet.message)"
             attributedText.append(NSAttributedString(string: tweetString, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)]))
             
             //만약 케스팅이 성공적이라면,
@@ -95,31 +95,32 @@ class TweetCell: DatasourceCell {
     
     override func setupViews() {
         
+        
+        backgroundColor = .white
+        
         //원래는 라인이 히든되어있음
         separatorLineView.isHidden = false
-        separatorLineView.backgroundColor = UIColor(r: 230, g: 230, b: 230)
-        backgroundColor = .white
+        //        separatorLineView.backgroundColor = UIColor(r: 100, g: 230, b: 11)
+        
         
         addSubview(profileImageView)
         addSubview(messageTextView)
         
-//        addSubview(replyButton)
-//        addSubview(retweetButton)
-        
         
         profileImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 60)
         
-        messageTextView.anchor(topAnchor, left: profileImageView.rightAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 4, leftConstant: 7, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        messageTextView.anchor(topAnchor, left: profileImageView.rightAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 7, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
 //        replyButton.anchor(nil, left: messageTextView.leftAnchor, bottom: self.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 20, heightConstant: 20)
         
         // UIStackView를 사용해서 트윗셀 밑에 리플라이, 리트윗,..., 등 4개의 버튼을 어떤 화면에서든 한번에 관리하기 쉽게 만들기
         setupBottomButtons()
+        
     }
     
     
     fileprivate func setupBottomButtons() {
-        
+                
         let replyButtonContainerView = UIView()
 //        replyButtonContainerView.backgroundColor = .red
         
@@ -138,7 +139,7 @@ class TweetCell: DatasourceCell {
         buttonStackView.distribution = .fillEqually
         
         addSubview(buttonStackView)
-        buttonStackView.anchor(nil, left: messageTextView.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 20)
+        buttonStackView.anchor(nil, left: messageTextView.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 8, rightConstant: 0, widthConstant: 0, heightConstant: 20)
         addSubview(replyButton)
         replyButton.anchor(replyButtonContainerView.topAnchor, left: replyButtonContainerView.leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 20, heightConstant: 20)
         addSubview(retweetButton)
