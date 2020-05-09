@@ -7,6 +7,9 @@
 //
 
 import LBTAComponents
+import TRON
+import SwiftyJSON
+import Alamofire
 
 //github remote repository added.
 //Let's start using Branch: jiwoo
@@ -38,11 +41,49 @@ class HomeDatasourceController: DatasourceController {
         let homeDatasource = HomeDatasource()
         self.datasource = homeDatasource
         
+        //위에 HomeDatasource를 사용하지 않고, JSON Parsing with TRON
+//        fetchHomeFeed()
+        
     }
     
+//    let tron = TRON(baseURL: "https://api.letsbuildthatapp.com")
+//
+//    class Home: Codable {
+//
+//        required init(json: JSON) throws {
+//            print("Now ready to parde json: \n", json)
+//        }
+//    }
+//
+//    class JSONError: Codable {
+////        required init(json: JSONError) throws{
+////            print("EEE")
+////        }
+//        required init(json: JSON) throws {
+//            print("JSON ERROR")
+//        }
+//    }
+    
+
+//
+//    fileprivate func fetchHomeFeed() {
+//
+//        let request: APIRequest<Home, JSONError> = tron.codable.request("twitter/home")
+//        request.perform(withSuccess: { (home) in
+//            print("Successfully fetched our json objects")
+//        }) { (err) in
+//            print("Failed to fetch json...", err)
+//        }
+//
+//        request.perform()
+//
+//        //this is a lot of code, lets use tron instread
+////        URLSession.shared.dataTask(with: <#T##URL#>, completionHandler: <#T##(Data?, URLResponse?, Error?) -> Void#>)
+//    }
     
     
-    //네이케이션바 커스터마이징
+    
+    //네비게이션바 커스터마이징
     private func setupNavigationBarItems() {
 
         
