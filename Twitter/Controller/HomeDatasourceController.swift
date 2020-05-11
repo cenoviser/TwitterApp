@@ -163,46 +163,36 @@ class HomeDatasourceController: DatasourceController {
         
         //first section of users
         if indexPath.section == 0 {
+            guard let user = self.datasource?.item(indexPath) as? User else { return .zero }
             
-            //Dynamic cell sizing
-            if let user = self.datasource?.item(indexPath) as? User {
-                
-                //유저셀에서 정의된 바이오 텍스트 왼쪽의 width크기
-                let approximateWidthOfBioTextView = view.frame.width - 12 - 50 - 12 - 2 //width를 줄이면 height가 올라가는 방식
-                
-                let size = CGSize(width: approximateWidthOfBioTextView, height: 1000)
-                
-                let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
-                
-                //get an estimation of the height of the cell based on the bio.text
-                let estimatiedFrame = NSString(string: user.bioText).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-                
-                return CGSize(width: view.frame.width, height: estimatiedFrame.height + 66)
-            }
+            let estimatedHeight = estimatedHeightForText(user.bioText)
+            return CGSize(width: view.frame.width, height: estimatedHeight + 66)
         } else if indexPath.section == 1 {
-            
             //our tweets size estimation
-            
             //케스트 into Tweet
-            guard let tweet = datasource?.item(indexPath) as? Tweet else {
-                return .zero
-            }
+            guard let tweet = datasource?.item(indexPath) as? Tweet else { return .zero }
             
-            //유저셀에서 정의된 바이오 텍스트 왼쪽의 width크기
-            let approximateWidthOfBioTextView = view.frame.width - 12 - 50 - 12 - 2 //width를 줄이면 height가 올라가는 방식
-            
-            let size = CGSize(width: approximateWidthOfBioTextView, height: 1000)
-            
-            let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
-            
-            //get an estimation of the height of the cell based on the bio.text
-            let estimatiedFrame = NSString(string: tweet.message).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-            
-            return CGSize(width: view.frame.width, height: estimatiedFrame.height + 90)
+            let estimatedHeight = estimatedHeightForText(tweet.message)
+            return CGSize(width: view.frame.width, height: estimatedHeight + 85)
         }
         
-        
         return CGSize(width: view.frame.width, height: 200)
+    }
+    
+    
+    private func estimatedHeightForText(_ text: String) -> CGFloat {
+        
+        //유저셀에서 정의된 바이오 텍스트 왼쪽의 width크기
+        let approximateWidthOfBioTextView = view.frame.width - 12 - 50 - 12 - 2 //width를 줄이면 height가 올라가는 방식
+        
+        let size = CGSize(width: approximateWidthOfBioTextView, height: 1000)
+        
+        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
+        
+        //get an estimation of the height of the cell based on the bio.text
+        let estimatedFrame = NSString(string: text).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+        
+        return estimatedFrame.height
     }
     
 }
