@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 // 프로젝트가 작기 때문에 클래스를 안쓰고 스트럭트로 충분
 struct Tweet {
     let user: User

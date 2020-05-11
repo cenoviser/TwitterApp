@@ -9,7 +9,6 @@
 import LBTAComponents
 import TRON
 import SwiftyJSON
-import Alamofire
 
 //github remote repository added.
 //Let's start using Branch: jiwoo
@@ -41,21 +40,21 @@ class HomeDatasourceController: DatasourceController {
         let homeDatasource = HomeDatasource()
         self.datasource = homeDatasource
         
-        //위에 HomeDatasource를 사용하지 않고, JSON Parsing with TRON
+//        위에 HomeDatasource를 사용하지 않고, JSON Parsing with TRON
 //        fetchHomeFeed()
         
     }
     
 //    let tron = TRON(baseURL: "https://api.letsbuildthatapp.com")
 //
-//    class Home: Codable {
+//    class Home: CodableSerializer {
 //
 //        required init(json: JSON) throws {
 //            print("Now ready to parde json: \n", json)
 //        }
 //    }
 //
-//    class JSONError: Codable {
+//    class JSONError: Decodable {
 ////        required init(json: JSONError) throws{
 ////            print("EEE")
 ////        }
@@ -65,8 +64,8 @@ class HomeDatasourceController: DatasourceController {
 //    }
     
 
-//
 //    fileprivate func fetchHomeFeed() {
+//        let reqq: APIRequest = tron.codable.request("")
 //
 //        let request: APIRequest<Home, JSONError> = tron.codable.request("twitter/home")
 //        request.perform(withSuccess: { (home) in
@@ -162,22 +161,46 @@ class HomeDatasourceController: DatasourceController {
     //Cell size 정의
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        //Dynamic cell sizing
-        if let user = self.datasource?.item(indexPath) as? User {
+        //first section of users
+        if indexPath.section == 0 {
+            
+            //Dynamic cell sizing
+            if let user = self.datasource?.item(indexPath) as? User {
+                
+                //유저셀에서 정의된 바이오 텍스트 왼쪽의 width크기
+                let approximateWidthOfBioTextView = view.frame.width - 12 - 50 - 12 - 2 //width를 줄이면 height가 올라가는 방식
+                
+                let size = CGSize(width: approximateWidthOfBioTextView, height: 1000)
+                
+                let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
+                
+                //get an estimation of the height of the cell based on the bio.text
+                let estimatiedFrame = NSString(string: user.bioText).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+                
+                return CGSize(width: view.frame.width, height: estimatiedFrame.height + 66)
+            }
+        } else if indexPath.section == 1 {
+            
+            //our tweets size estimation
+            
+            //케스트 into Tweet
+            guard let tweet = datasource?.item(indexPath) as? Tweet else {
+                return .zero
+            }
             
             //유저셀에서 정의된 바이오 텍스트 왼쪽의 width크기
-            let approximateWidthOfBioTextView = view.frame.width - 12 - 50 - 8 //width를 줄이면 height가 올라가는 방식
+            let approximateWidthOfBioTextView = view.frame.width - 12 - 50 - 12 - 2 //width를 줄이면 height가 올라가는 방식
             
             let size = CGSize(width: approximateWidthOfBioTextView, height: 1000)
             
             let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
             
             //get an estimation of the height of the cell based on the bio.text
-            let estimatiedFrame = NSString(string: user.bioText).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+            let estimatiedFrame = NSString(string: tweet.message).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
             
-            return CGSize(width: view.frame.width, height: estimatiedFrame.height + 80 )
-
+            return CGSize(width: view.frame.width, height: estimatiedFrame.height + 90)
         }
+        
         
         return CGSize(width: view.frame.width, height: 200)
     }

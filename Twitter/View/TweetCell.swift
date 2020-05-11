@@ -24,7 +24,7 @@ class TweetCell: DatasourceCell {
             
             //paragraph에 라인스페이징을 추가해서 이름밑으로 트윗텍스트가 어느정도 벌어지게끔하기. 하지만 이 코드를 트윗텍스트 밑에다 추가하면 트윗텍스트 모든게 벌어져서 보임.
             let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.lineSpacing = 40
+            paragraphStyle.lineSpacing = 4
             let range = NSMakeRange(0, attributedText.string.count)
             attributedText.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
             
@@ -49,13 +49,13 @@ class TweetCell: DatasourceCell {
     //UserCell의 왼쪽에 이미지 뷰를 넣을 공간 만들기
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "jiwoo_png")
+        imageView.image = UIImage(named: "ai")
         //모서리 둥글하게
         imageView.layer.cornerRadius = 5
 //        imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
-        imageView.layer.borderColor = UIColor(r: 170, g: 170, b: 170).cgColor
-        imageView.layer.borderWidth = 2
+//        imageView.layer.borderColor = UIColor(r: 170, g: 170, b: 170).cgColor
+//        imageView.layer.borderWidth = 2
         return imageView
     }()
     
@@ -100,7 +100,7 @@ class TweetCell: DatasourceCell {
         
         //원래는 라인이 히든되어있음
         separatorLineView.isHidden = false
-        //        separatorLineView.backgroundColor = UIColor(r: 100, g: 230, b: 11)
+        separatorLineView.backgroundColor = UIColor(r: 230, g: 230, b: 230)
         
         
         addSubview(profileImageView)
@@ -109,7 +109,7 @@ class TweetCell: DatasourceCell {
         
         profileImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 60)
         
-        messageTextView.anchor(topAnchor, left: profileImageView.rightAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 7, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        messageTextView.anchor(topAnchor, left: profileImageView.rightAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 4, leftConstant: 7, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
 //        replyButton.anchor(nil, left: messageTextView.leftAnchor, bottom: self.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 20, heightConstant: 20)
         
@@ -120,24 +120,24 @@ class TweetCell: DatasourceCell {
     
     
     fileprivate func setupBottomButtons() {
-                
+
         let replyButtonContainerView = UIView()
 //        replyButtonContainerView.backgroundColor = .red
-        
+
         let retweetButtonContainerView = UIView()
 //        retweetButtonContainerView.backgroundColor = .blue
-        
+
         let likeButtonContainerView = UIView()
 //        likeButtonContainerView.backgroundColor = .green
-        
+
         let directMessageButtonContainerView = UIView()
 //        directMessageButtonContainerView.backgroundColor = .purple
-        
+
         let buttonStackView = UIStackView(arrangedSubviews: [replyButtonContainerView, retweetButtonContainerView, likeButtonContainerView, directMessageButtonContainerView])
         buttonStackView.axis = .horizontal
         //동일하게 나누기
         buttonStackView.distribution = .fillEqually
-        
+
         addSubview(buttonStackView)
         buttonStackView.anchor(nil, left: messageTextView.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 8, rightConstant: 0, widthConstant: 0, heightConstant: 20)
         addSubview(replyButton)
@@ -150,6 +150,8 @@ class TweetCell: DatasourceCell {
         addSubview(sendMsgButton)
         sendMsgButton.anchor(directMessageButtonContainerView.topAnchor, left: directMessageButtonContainerView.leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 20, heightConstant: 20)
     }
+    
+
     
     
     

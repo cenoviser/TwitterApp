@@ -33,8 +33,8 @@ class UserCell: DatasourceCell {
         imageView.layer.cornerRadius = 5
 //        imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
-        imageView.layer.borderColor = UIColor(r: 170, g: 170, b: 170).cgColor
-        imageView.layer.borderWidth = 2
+//        imageView.layer.borderColor = UIColor(r: 170, g: 170, b: 170).cgColor
+//        imageView.layer.borderWidth = 2
         return imageView
     }()
     
@@ -57,7 +57,6 @@ class UserCell: DatasourceCell {
     //bio는 Text View로
     let bioTextView: UITextView = {
         let textView = UITextView()
-        textView.text = "Your bioYour bioYour bioYour bioYour bioYour bioYour bioYour bioYour bioYour bioYour bioYour bioYour bioYour bioYour bio"
 //        textView.backgroundColor = .yellow
         textView.font = UIFont.systemFont(ofSize: 15)
         //유저네임레이블이 좀 짤려보이는거 수정하기
@@ -107,7 +106,7 @@ class UserCell: DatasourceCell {
         
         //셀을 분리하는 라인 추가하기
         separatorLineView.isHidden = false
-        //        separatorLineView.backgroundColor = UIColor(r: 230, g: 230, b: 230)
+        separatorLineView.backgroundColor = UIColor(r: 230, g: 230, b: 230)
         
         profileImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 60)
         
@@ -115,9 +114,9 @@ class UserCell: DatasourceCell {
         nameLabel.anchor(profileImageView.topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: followButton.leftAnchor, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 20)
         
         //right anchor은 위의 nameLabel과 같게 하기 위해
-        usernameLable.anchor(nameLabel.bottomAnchor, left: profileImageView.rightAnchor, bottom: nil, right: followButton.leftAnchor, topConstant: 4, leftConstant: 5, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 20)
+        usernameLable.anchor(nameLabel.bottomAnchor, left: profileImageView.rightAnchor, bottom: nil, right: followButton.leftAnchor, topConstant: 2, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 20)
         
-        bioTextView.anchor(usernameLable.bottomAnchor, left: usernameLable.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: -4, leftConstant: -4, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        bioTextView.anchor(usernameLable.bottomAnchor, left: usernameLable.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: -2, leftConstant: -4, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
         followButton.anchor(topAnchor, left: nil, bottom: nil, right: self.rightAnchor, topConstant: 12, leftConstant: 0, bottomConstant: 0, rightConstant: 12, widthConstant: 120, heightConstant: 34)
         
