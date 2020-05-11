@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "jiwoo.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "retweet@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
